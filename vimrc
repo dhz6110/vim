@@ -107,7 +107,7 @@ Plugin 'YankRing.vim'
 " the doc at http://ternjs.net/doc/manual.html#vim
 Plugin 'marijnh/tern_for_vim'
 " Golang Plugins
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 " JSX syntax highlight.
 Plugin 'mxw/vim-jsx'
 " Markdown syntastic highlight
@@ -555,3 +555,72 @@ let g:vim_markdown_frontmatter=1
 " and when you open this, you can manually trigger preview
 " via the command :InstantMarkdownPreview
 let g:instant_markdown_autostart = 0
+
+
+" myvimrc
+set   backspace=indent,eol,start " 使回格键（backspace）正常处理indent, eol, start等
+set autoindent "自动缩进，即每行的缩进值与上一行相等
+set   cindent "使用 C 语言的缩进方式
+set   cinoptions=:0 "C 语言缩进的具体方式
+set   fileformat=unix
+set   guioptions-=T " 隐藏工具栏
+set   guioptions-=m " 隐藏菜单栏
+set   guioptions-=r
+set   guioptions-=l
+set   helpheight=10 "initial height of the help window
+set   helplang=cn
+set   hidden " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+set   history=100
+set   ignorecase smartcase " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+set   number
+set   pumheight=10 "?
+set   ruler " 打开状态栏标尺
+set   scrolloff=5 " 光标移动到buffer的顶部和底部时保持5行距离
+set   showcmd " 输入的命令显示出来，看的清楚些 
+set   smartindent " 为C程序提供自动缩进
+set   softtabstop=4 " 使得按退格键时可以一次删掉 4 个空格
+set   textwidth=80 "80个字符宽度时候会自动换行
+set   wildignore+=*.bak,*.o,*.e,*~ "tab键的自动完成现在会忽略这些
+set   wildmode=list:longest,full
+set   nowrap  " 不折行
+
+"?
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \     exe "normal g'\"" |
+    \ endif
+
+let mapleader=","
+" Space to command mode.
+nnoremap <space> :
+vnoremap <space> :
+" Switching between buffers.
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+inoremap <C-h> <Esc><C-W>h
+inoremap <C-j> <Esc><C-W>j
+inoremap <C-k> <Esc><C-W>k
+inoremap <C-l> <Esc><C-W>l
+" "cd" to change to open directory.
+let OpenDir=system("pwd")
+nmap <silent> <leader>cd :exe 'cd ' . OpenDir<cr>:pwd<cr>
+
+set shiftwidth=4 " 设定 > 命令移动时的宽度为 4
+let &termencoding=&encoding
+set fileencodings=utf-8,gbk,ucs-bom,cp936
+set formatoptions+=r
+
+"tab键替换成4个空格
+set et
+set ci
+set sw=4
+set ts=4
+
+"add right mouse
+set mousemodel=popup
+
+"adding taglist
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
